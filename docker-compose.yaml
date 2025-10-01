@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  web:
+    image: img #esraaelhasanen/jenkins-flask-app:19
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=dev   # or development if you want
+    restart: unless-stopped

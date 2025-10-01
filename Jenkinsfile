@@ -74,7 +74,23 @@ pipeline{
                 sh "docker push $IMAGE_TAG"
             }
         }
-        
+
+        stage('update image name on compose file'){
+
+            steps{
+
+                 sh "sed -i 's|image: img|image: $IMAGE_TAG|' docker-compose.yaml"
+            }
+        }
+
+        stage('Run compose file'){
+
+            steps{
+
+                sh "docker-compose up -d"
+            }
+        }
+
 
     }
 }
