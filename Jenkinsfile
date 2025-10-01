@@ -10,7 +10,7 @@ pipeline{
                 sh "ls -al"
                 sh "ls -ltr"
                 sh "$pwd"
-                sh "$whoami"
+                //sh "$whoami"
             }
 
 
