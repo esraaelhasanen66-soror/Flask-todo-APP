@@ -20,7 +20,7 @@ pipeline{
 
             steps{
 
-                sh "pip install -r requirements.text"
+                sh "pip3 install -r requirements.text"
             }
         }
 
