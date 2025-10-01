@@ -1,6 +1,11 @@
 pipeline{
 
     agent any
+    environment{
+        IMAGE_NAME='esraaelhasanen/jenkins-flask-app'
+        IMAGE_TAG="${IMAGE_NAME}:${env.BUILD_NUMBER}"
+
+    }
     stages{
 
         stage('checkout'){
@@ -43,7 +48,33 @@ pipeline{
                 sh "venv/bin/python -m pytest"
             }
         }
+        stage('Login to Dcoker hub'){
 
+            steps {
+                withCredentials([string(credentialsId: 'dockerhubpass', variable: 'dockerhubpass')]) {
+                sh 'echo ${dockerhubpass} | docker login -u esraaelhasanen --password-stdin'}
+                echo 'Login successfully'
+            }
+        }
+
+        stage('Build Docker image'){
+
+            steps{
+
+                sh "docker build -t $IMAGE_TAG ."
+                sh "docker image ls"
+            }
+
+
+        }
+        stage('Push to DcokerHub'){
+
+            steps{
+
+                sh "docker push $IMAGE_TAG"
+            }
+        }
+        
 
     }
 }
