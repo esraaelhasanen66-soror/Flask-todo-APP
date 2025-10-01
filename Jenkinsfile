@@ -39,7 +39,8 @@ pipeline{
 
             steps{
 
-                sh "pytest"
+                //sh "pytest"
+                sh "venv/bin/python -m pytest"
             }
         }
 
