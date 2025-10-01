@@ -28,8 +28,6 @@ pipeline{
                  
                 sh "python3 -m venv venv"
                 sh "venv/bin/pip install --upgrade pip"
-                sh "echo dd"
-                sh "echo wel"
                 sh "pwd"
                 sh "whoami"
                 sh "venv/bin/pip install -r requirements.txt"
