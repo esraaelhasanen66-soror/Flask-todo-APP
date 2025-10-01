@@ -22,13 +22,12 @@ pipeline{
 
                  
                 sh "python3 -m venv venv"
-                sh "source venv/bin/activate"
+                sh "venv/bin/pip install --upgrade pip"
                 sh "echo dd"
-                sh "pip install --upgrade pip"
                 sh "echo wel"
                 sh "pwd"
                 sh "whoami"
-                sh "pip install -r requirements.txt"
+                sh "venv/bin/pip install -r requirements.txt"
                 sh "pwd"
                 sh "whoami"
 
